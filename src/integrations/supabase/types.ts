@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      facilities: {
+        Row: {
+          actual_or_revised_year: number | null
+          announced_year: number | null
+          capex_notes: string | null
+          capex_usd: number | null
+          company: string
+          country: string
+          created_at: string
+          delay_source: string | null
+          delay_status: string | null
+          disclosure_confidence: string | null
+          facility_id: string
+          facility_name: string
+          facility_type: string
+          grid_carbon_intensity: number | null
+          grid_strain_confidence: string | null
+          latitude: number
+          longitude: number
+          node_technology: string | null
+          notes: string | null
+          pressure_score: number | null
+          region_state: string | null
+          status: string
+          target_production_year: number | null
+          water_stress_confidence: string | null
+          water_stress_score: number | null
+        }
+        Insert: {
+          actual_or_revised_year?: number | null
+          announced_year?: number | null
+          capex_notes?: string | null
+          capex_usd?: number | null
+          company: string
+          country: string
+          created_at?: string
+          delay_source?: string | null
+          delay_status?: string | null
+          disclosure_confidence?: string | null
+          facility_id: string
+          facility_name: string
+          facility_type: string
+          grid_carbon_intensity?: number | null
+          grid_strain_confidence?: string | null
+          latitude: number
+          longitude: number
+          node_technology?: string | null
+          notes?: string | null
+          pressure_score?: number | null
+          region_state?: string | null
+          status: string
+          target_production_year?: number | null
+          water_stress_confidence?: string | null
+          water_stress_score?: number | null
+        }
+        Update: {
+          actual_or_revised_year?: number | null
+          announced_year?: number | null
+          capex_notes?: string | null
+          capex_usd?: number | null
+          company?: string
+          country?: string
+          created_at?: string
+          delay_source?: string | null
+          delay_status?: string | null
+          disclosure_confidence?: string | null
+          facility_id?: string
+          facility_name?: string
+          facility_type?: string
+          grid_carbon_intensity?: number | null
+          grid_strain_confidence?: string | null
+          latitude?: number
+          longitude?: number
+          node_technology?: string | null
+          notes?: string | null
+          pressure_score?: number | null
+          region_state?: string | null
+          status?: string
+          target_production_year?: number | null
+          water_stress_confidence?: string | null
+          water_stress_score?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
