@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import L from "leaflet";
-import { Link } from "@tanstack/react-router";
 import type { Facility } from "@/lib/facility-types";
 import { pressureBucket, formatCapex, statusColor } from "@/lib/facility-types";
 import { createRoot, type Root } from "react-dom/client";
@@ -47,13 +46,12 @@ function PopupContent({ f }: { f: Facility }) {
       {f.delay_status && f.delay_status !== "On Schedule" && (
         <div className="text-[10px] text-amber">Delay: {f.delay_status}</div>
       )}
-      <Link
-        to="/facilities"
-        search={{ focus: f.facility_id }}
+      <a
+        href={`/facilities?focus=${encodeURIComponent(f.facility_id)}`}
         className="inline-block w-full rounded bg-teal/15 text-teal px-2 py-1.5 text-center text-[11px] font-semibold hover:bg-teal/25 transition"
       >
         View Full Profile →
-      </Link>
+      </a>
     </div>
   );
 }
