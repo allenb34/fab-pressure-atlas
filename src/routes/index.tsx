@@ -83,7 +83,7 @@ function AtlasBody() {
       <main className="flex-1 relative">
         {isLoading && <Loading />}
         {error && <ErrorBox msg={(error as Error).message} />}
-        <FabMap facilities={filtered} />
+        <ClientFabMap facilities={filtered} />
         <button
           onClick={() => setOpen((v) => !v)}
           className="md:hidden absolute top-3 left-3 z-[800] rounded-md bg-card border border-border p-2 shadow-lg"
