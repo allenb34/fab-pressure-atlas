@@ -1,13 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState, lazy, Suspense } from "react";
 import { NavBar } from "@/components/NavBar";
-import { FabMap } from "@/components/FabMap";
 import { FilterPanel } from "@/components/FilterPanel";
 import { KpiCards } from "@/components/KpiCards";
 import { FiltersProvider, useFilters } from "@/components/FiltersContext";
 import { useFacilities } from "@/hooks/useFacilities";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
+
+const FabMap = lazy(() => import("@/components/FabMap").then(m => ({ default: m.FabMap })));
+
+function ClientFabMap(props: { facilities: any[] }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  if (!mounted) return <div className="absolute inset-0 bg-background" />;
+  return <Suspense fallback={null}><FabMap {...props} /></Suspense>;
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
