@@ -94,6 +94,9 @@ function Page() {
             <code className="px-1 mx-1 rounded bg-secondary text-xs">Stalled</code>.
           </p>
           <p>
+            In this dataset, on-schedule facilities actually scored slightly higher on average than delayed ones
+            (0.38 vs. 0.32). This null result is likely confounded by geography: several high-pressure, high-carbon
+            on-schedule projects sit in Taiwan and Germany, while some delayed facilities are in lower-carbon regions.
             With n ≈ 24, this is an observational, exploratory comparison. No causal claim is made. A larger sample
             and time-series tracking would be required for any inferential statement.
           </p>
