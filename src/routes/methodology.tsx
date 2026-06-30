@@ -109,8 +109,8 @@ function Page() {
             <li>SemiEngineering Annual Global IC Fabs and Facilities Report (2024, 2025). <a className="text-teal hover:underline" target="_blank" rel="noreferrer" href="https://semiengineering.com">semiengineering.com</a></li>
             <li>UltraFacility Semiconductor Construction Timelines (April 2026). <a className="text-teal hover:underline" target="_blank" rel="noreferrer" href="https://www.ultrafacilityportal.io">ultrafacilityportal.io</a></li>
             <li>Manufacturing Megaprojects Tracker (April 2026). <a className="text-teal hover:underline" target="_blank" rel="noreferrer" href="https://map.engineered-vision.com/">map.engineered-vision.com</a></li>
-            <li>Company press releases and investor relations pages (Intel, TSMC, Samsung, Micron, TI, GlobalFoundries) — cited per facility in the delay_source field.</li>
-            <li>Nikkei Asia / TrendForce / Tom's Hardware — Micron Hiroshima sourcing (November–December 2025).</li>
+            <li><a className="text-teal hover:underline" target="_blank" rel="noopener noreferrer" href="https://www.intel.com/content/www/us/en/newsroom/home.html">Company press releases and investor relations pages</a> (Intel, TSMC, Samsung, Micron, TI, GlobalFoundries). Note: each facility's specific source is recorded in the <code className="px-1 rounded bg-secondary text-xs">delay_source</code> field of the dataset.</li>
+            <li><a className="text-teal hover:underline" target="_blank" rel="noopener noreferrer" href="https://www.datacenterdynamics.com/en/news/micron-planning-96bn-hbm-fab-at-hiroshima-site-report/">Nikkei Asia / TrendForce / Tom's Hardware — Micron Hiroshima sourcing</a> (Data Center Dynamics, citing Nikkei Asia, December 2025).</li>
           </ul>
         </Section>
 
