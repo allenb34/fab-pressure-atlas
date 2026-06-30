@@ -35,6 +35,9 @@ export function KpiCards({ rows }: { rows: Facility[] }) {
             <div className="text-[10px] text-muted-foreground">On-schedule avg · n={onSched.length}</div>
           </div>
         </div>
+        <div className="mt-2 text-[11px] italic text-[#9ca3af]">
+          On-schedule and delayed facilities show similar pressure scores — geography may matter more than environmental risk.
+        </div>
         <div className="mt-2 text-[10px] text-muted-foreground italic">Exploratory, small-n</div>
       </div>
 
