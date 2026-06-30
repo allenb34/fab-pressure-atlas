@@ -44,7 +44,21 @@ function PopupContent({ f }: { f: Facility }) {
         </div>
       </div>
       {f.delay_status && f.delay_status !== "On Schedule" && (
-        <div className="text-[10px] text-amber">Delay: {f.delay_status}</div>
+        <div
+          className="text-[10px]"
+          style={{
+            color:
+              f.delay_status === "Delayed <1yr" || f.delay_status === "Delayed"
+                ? "#f59e0b"
+                : f.delay_status === "Delayed >1yr" || f.delay_status === "Stalled"
+                ? "#ef4444"
+                : f.delay_status === "Cancelled"
+                ? "#9ca3af"
+                : "#6b7280",
+          }}
+        >
+          Delay: {f.delay_status}
+        </div>
       )}
       <a
         href={`/facilities?focus=${encodeURIComponent(f.facility_id)}`}
