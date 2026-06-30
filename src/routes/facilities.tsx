@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { z } from "zod";
 import { NavBar } from "@/components/NavBar";
 import { FilterPanel } from "@/components/FilterPanel";
@@ -95,7 +95,7 @@ function Body() {
             </div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {filtered.map((f) => <FacilityCard key={f.facility_id} f={f} />)}
+              {filtered.map((f) => <FacilityCard key={f.facility_id} f={f} focus={focus} />)}
             </div>
           )}
         </main>
@@ -104,7 +104,16 @@ function Body() {
   );
 }
 
-function FacilityCard({ f }: { f: Facility }) {
+function FacilityCard({ f, focus }: { f: Facility; focus?: string }) {
+  const cardRef = useRef<HTMLElement>(null);
+  const isFocused = f.facility_id === focus;
+
+  useEffect(() => {
+    if (isFocused && cardRef.current) {
+      cardRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [isFocused]);
+
   // Sub-score normalization for display bars (0..1)
   const water = f.water_stress_score != null ? Math.min(1, f.water_stress_score / 5) : null;
   const gridMax = 800; // approx ceiling for normalization display
@@ -113,7 +122,11 @@ function FacilityCard({ f }: { f: Facility }) {
   const disc = f.disclosure_confidence && f.disclosure_confidence in discMap ? discMap[f.disclosure_confidence] : null;
 
   return (
-    <article className="rounded-lg border border-border bg-card p-4 space-y-3">
+    <article
+      ref={cardRef}
+      className="rounded-lg border border-border bg-card p-4 space-y-3"
+      style={isFocused ? { border: "2px solid #00d4aa" } : undefined}
+    >
       <header className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="text-sm font-bold truncate">{f.facility_name}</h3>
@@ -135,9 +148,13 @@ function FacilityCard({ f }: { f: Facility }) {
             style={
               f.delay_status === "On Schedule"
                 ? { background: "rgba(34,197,94,0.15)", color: "#22c55e" }
-                : f.delay_status === "Cancelled"
+                : f.delay_status === "Delayed <1yr" || f.delay_status === "Delayed"
+                ? { background: "rgba(245,158,11,0.15)", color: "#f59e0b" }
+                : f.delay_status === "Delayed >1yr" || f.delay_status === "Stalled"
                 ? { background: "rgba(239,68,68,0.15)", color: "#ef4444" }
-                : { background: "rgba(245,158,11,0.15)", color: "#f59e0b" }
+                : f.delay_status === "Cancelled"
+                ? { background: "rgba(75,85,99,0.2)", color: "#9ca3af" }
+                : { background: "rgba(107,114,128,0.15)", color: "#6b7280" }
             }
           >
             {f.delay_status}
