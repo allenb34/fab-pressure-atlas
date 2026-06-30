@@ -120,7 +120,7 @@ export function FabMap({ facilities }: { facilities: Facility[] }) {
           fillOpacity: 0.85,
         });
         marker = cm;
-        if (isDelayed) {
+        if (shouldPulse) {
           // add a pulsing white ring via divIcon overlay
           const pulseIcon = L.divIcon({
             className: "",
