@@ -94,7 +94,10 @@ export function FabMap({ facilities }: { facilities: Facility[] }) {
     rootsRef.current = [];
 
     facilities.forEach((f) => {
-      const isDelayed = f.delay_status === "Delayed >1yr" || f.delay_status === "Stalled";
+      const shouldPulse =
+        f.delay_status === "Delayed >1yr" ||
+        f.delay_status === "Stalled" ||
+        f.status === "Stalled";
       const isCancelled = f.delay_status === "Cancelled" || f.status === "Cancelled";
       const b = pressureBucket(f.pressure_score);
 
@@ -117,7 +120,7 @@ export function FabMap({ facilities }: { facilities: Facility[] }) {
           fillOpacity: 0.85,
         });
         marker = cm;
-        if (isDelayed) {
+        if (shouldPulse) {
           // add a pulsing white ring via divIcon overlay
           const pulseIcon = L.divIcon({
             className: "",
